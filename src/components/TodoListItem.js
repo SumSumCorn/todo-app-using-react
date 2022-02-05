@@ -53,7 +53,7 @@ const ListItem = styled.div`
   }
 `;
 
-const TdoListItem = ({ todo, onRemove, onToggle }) => {
+const TodoListItem = ({ todo, onRemove, onToggle }) => {
   const { id, text, checked } = todo;
 
   return (
@@ -79,4 +79,4 @@ const TdoListItem = ({ todo, onRemove, onToggle }) => {
   );
 };
 
-export default TdoListItem;
+export default React.memo(TodoListItem);
