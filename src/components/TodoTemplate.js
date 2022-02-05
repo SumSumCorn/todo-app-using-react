@@ -25,8 +25,8 @@ const Content = styled.div`
 const TodoTemplate = ({ children }) => {
   return (
     <Box>
-      <AppTitle>{children}</AppTitle>
-      <Content />
+      <AppTitle>To-Do 앱을 만들자</AppTitle>
+      <Content>{children}</Content>
     </Box>
   );
 };
