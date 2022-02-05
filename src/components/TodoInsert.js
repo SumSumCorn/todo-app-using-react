@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
 import { MdAdd } from 'react-icons/md';
 
-const FormBox = styled.div`
+const FormBox = styled.form`
   display: flex;
   background: #495057;
   input {
@@ -37,10 +37,29 @@ const FormBox = styled.div`
   }
 `;
 
-const TodoInsert = () => {
+const TodoInsert = ({ onInsert }) => {
+  const [value, setValue] = useState('');
+
+  const onChange = useCallback((e) => {
+    setValue(e.target.value);
+  }, []);
+
+  const onSubmit = useCallback(
+    (e) => {
+      onInsert(value);
+      setValue('');
+      e.preventDefault();
+    },
+    [onInsert, value],
+  );
+
   return (
-    <FormBox>
-      <input placeholder="할 일을 입력하세요" />
+    <FormBox onSubmit={onSubmit}>
+      <input
+        placeholder="할 일을 입력하세요"
+        value={value}
+        onChange={onChange}
+      />
       <button type="submit">
         <MdAdd />
       </button>
